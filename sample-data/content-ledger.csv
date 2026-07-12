@@ -1,0 +1,10 @@
+id,status,pillar,title,hook,publish_date,platform_url,length_seconds,format_type,music_type,track_name,track_mood,voice_audibility,cta_variant,notes
+EX-001,published,Human behavior,Why Silence Feels Loud,Silence feels awkward because your brain expects rhythm.,2026-07-01,https://youtube.com/shorts/EXAMPLE001,14,narration_baseline,none,,baseline,clean,question_first,No-music narration baseline.
+EX-002,published,Memory,Why Old Songs Hit Hard,One song can pull a memory back instantly.,2026-07-01,https://youtube.com/shorts/EXAMPLE002,8,ultra_short_trending_audio,trending_youtube_audio,Example Trend 01,nostalgic,clean,follow_daily,Ultra-short trend test.
+EX-003,published,Relationships,Anxiety Or Attraction,A racing heart is not always romance.,2026-07-01,https://youtube.com/shorts/EXAMPLE003,7,ultra_short_trending_audio,trending_youtube_audio,Example Trend 02,romantic tension,text_only,weird_facts,Text-first ultra-short.
+EX-004,published,Intuition,Your Gut Feeling Is Fast Math,Your brain can notice patterns before you explain them.,2026-07-02,https://youtube.com/shorts/EXAMPLE004,15,narration_baseline,royalty_free,Example Library Track,curious,clean,question_first,Longer narration comparison.
+EX-005,published,Body language,Why Eye Contact Feels Intense,Your brain treats eyes as social information.,2026-07-02,https://youtube.com/shorts/EXAMPLE005,8,ultra_short_trending_audio,trending_youtube_audio,Example Trend 01,social tension,clean,follow_daily,Same track as EX-002.
+EX-006,published,Fear,Why Fear Slows Time,Fear can make your brain record more detail.,2026-07-03,https://youtube.com/shorts/EXAMPLE006,7,ultra_short_trending_audio,trending_youtube_audio,Example Trend 03,dark pulse,text_only,weird_facts,Fast caption loop test.
+EX-007,scheduled,Social behavior,Why Compliments Feel Weird,A compliment can clash with how you see yourself.,2026-07-04,,8,ultra_short_trending_audio,trending_youtube_audio,,warm,clean,follow_daily,Ready for publishing.
+EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place instantly.,,,8,ultra_short_trending_audio,trending_youtube_audio,,nostalgic,clean,question_first,Draft idea.
+

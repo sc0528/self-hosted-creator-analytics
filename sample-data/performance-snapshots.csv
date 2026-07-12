@@ -1,0 +1,14 @@
+snapshot_date,id,days_since_publish,views,likes,comments,subscribers_gained,avg_percent_viewed,average_view_duration_seconds,shares,impressions,ctr_percent,music_type,track_name,track_mood,voice_audibility,notes
+2026-07-01,EX-001,0,74,2,0,0,82.0,11.5,0,420,4.3,none,,baseline,clean,Published baseline.
+2026-07-02,EX-001,1,244,9,1,0,79.0,11.1,1,980,5.1,none,,baseline,clean,24h baseline.
+2026-07-01,EX-002,0,390,19,2,1,126.0,10.1,4,1800,7.2,trending_youtube_audio,Example Trend 01,nostalgic,clean,Ultra-short launched.
+2026-07-02,EX-002,1,1880,91,12,7,142.0,11.4,18,7900,9.8,trending_youtube_audio,Example Trend 01,nostalgic,clean,Strong replay signal.
+2026-07-01,EX-003,0,620,24,4,2,118.0,8.3,7,2600,8.6,trending_youtube_audio,Example Trend 02,romantic tension,text_only,Text-first short.
+2026-07-02,EX-003,1,3210,144,21,13,137.0,9.6,35,14100,11.1,trending_youtube_audio,Example Trend 02,romantic tension,text_only,Best early performer.
+2026-07-02,EX-004,0,93,4,0,0,84.0,12.6,0,510,4.8,royalty_free,Example Library Track,curious,clean,Longer narration.
+2026-07-03,EX-004,1,360,13,2,1,81.0,12.1,2,1600,5.4,royalty_free,Example Library Track,curious,clean,Steady but slower.
+2026-07-02,EX-005,0,440,18,3,1,121.0,9.7,5,2100,7.9,trending_youtube_audio,Example Trend 01,social tension,clean,Same track as EX-002.
+2026-07-03,EX-005,1,2050,88,14,8,133.0,10.6,22,8400,10.2,trending_youtube_audio,Example Trend 01,social tension,clean,Track appears repeatable.
+2026-07-03,EX-006,0,710,31,5,3,151.0,10.6,9,3000,9.6,trending_youtube_audio,Example Trend 03,dark pulse,text_only,Fast loop test.
+2026-07-04,EX-006,1,4870,212,31,19,168.0,11.8,57,19800,12.7,trending_youtube_audio,Example Trend 03,dark pulse,text_only,High replay and conversion.
+

@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: creator-analytics-dashboard-static
+  namespace: example-apps
+data:
+  README: "Build this ConfigMap from dashboard/index.html in your own deployment process."
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: creator-analytics-dashboard
+  namespace: example-apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: creator-analytics-dashboard
+  template:
+    metadata:
+      labels:
+        app: creator-analytics-dashboard
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: creator-analytics-dashboard
+  namespace: example-apps
+spec:
+  selector:
+    app: creator-analytics-dashboard
+  ports:
+    - port: 80
+      targetPort: 80
+

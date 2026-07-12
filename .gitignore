@@ -1,0 +1,9 @@
+.env
+secrets/
+*.token.json
+*.secret.json
+*.log
+__pycache__/
+.DS_Store
+node_modules/
+

@@ -1,0 +1,14 @@
+{
+  "channelName": "Example Shorts Channel",
+  "timezone": "America/New_York",
+  "dashboardTitle": "Creator Analytics Dashboard",
+  "dataDirectory": "sample-data",
+  "metricsFile": "performance-snapshots.csv",
+  "ledgerFile": "content-ledger.csv",
+  "defaultCadenceGoalPerDay": 3,
+  "trackedExperiments": [
+    "narration_baseline",
+    "ultra_short_trending_audio"
+  ]
+}
+
