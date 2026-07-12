@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Creator Analytics Dashboard</title>
+  <link rel="icon" href="../assets/creator-analytics-logo.svg" type="image/svg+xml">
   <style>
     :root {
       color-scheme: light;
@@ -50,12 +51,10 @@
     .logo {
       width: 36px;
       height: 36px;
+      display: block;
+      flex: 0 0 auto;
       border-radius: 8px;
-      display: grid;
-      place-items: center;
-      background: #f0f7ff;
-      color: var(--blue);
-      font-weight: 850;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, .12);
     }
     .brand strong { display: block; font-size: 15px; }
     .brand span { display: block; color: #98aabc; font-size: 12px; }
@@ -214,7 +213,7 @@
   <div class="app">
     <aside>
       <div class="brand">
-        <div class="logo">CA</div>
+        <img class="logo" src="../assets/creator-analytics-logo.svg" alt="">
         <div>
           <strong>Creator Analytics</strong>
           <span>public demo</span>
