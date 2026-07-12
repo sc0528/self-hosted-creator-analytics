@@ -4,12 +4,12 @@ A public demo of a private-by-default, CSV-powered dashboard for creators who wa
 
 Explore synthetic YouTube Shorts data, compare formats and experiments, and evaluate the self-hosted workflow without connecting an account. No private home-lab details, real channel data, OAuth secrets, internal hostnames, or private network paths are included.
 
-![Creator Analytics dashboard overview](assets/dashboard-desktop.png)
+![Creator Analytics dashboard overview](assets/dashboard-desktop-demo.png)
 
 <details>
 <summary>Mobile dashboard preview</summary>
 
-![Creator Analytics mobile dashboard](assets/dashboard-mobile.png)
+![Creator Analytics mobile dashboard](assets/dashboard-mobile-demo.png)
 
 </details>
 
