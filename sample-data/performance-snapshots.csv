@@ -11,4 +11,7 @@ snapshot_date,id,days_since_publish,views,likes,comments,subscribers_gained,avg_
 2026-07-03,EX-005,1,2050,88,14,8,133.0,10.6,22,8400,10.2,trending_youtube_audio,Example Trend 01,social tension,clean,Track appears repeatable.
 2026-07-03,EX-006,0,710,31,5,3,151.0,10.6,9,3000,9.6,trending_youtube_audio,Example Trend 03,dark pulse,text_only,Fast loop test.
 2026-07-04,EX-006,1,4870,212,31,19,168.0,11.8,57,19800,12.7,trending_youtube_audio,Example Trend 03,dark pulse,text_only,High replay and conversion.
-
+2026-07-02,EX-009,0,180,14,3,2,46.0,193.2,5,3100,5.8,royalty_free,Example Ambient Bed,reflective,clean,Visual explainer launch.
+2026-07-03,EX-009,1,740,49,9,8,51.0,214.2,18,10100,6.4,royalty_free,Example Ambient Bed,reflective,clean,Strong search discovery.
+2026-07-03,EX-010,0,260,21,5,3,49.0,298.9,7,3900,6.7,none,,focused,clean,Talking-head launch.
+2026-07-04,EX-010,1,1120,83,16,12,54.0,329.4,29,14200,7.9,none,,focused,clean,High watch time and conversion.

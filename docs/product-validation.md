@@ -5,14 +5,14 @@ This early preview should validate demand before building a full paid automation
 ## Target Users
 
 - small YouTube creators
-- Shorts creators testing high-volume publishing
+- creators testing Shorts, standard videos, or both
 - faceless channel operators
 - self-hosted/home-lab users
 - indie creators who want local analytics history
 
 ## Core Question
 
-Do creators want a self-hosted dashboard that tracks publishing cadence, Shorts format tests, music/audio experiments, and subscriber conversion?
+Do creators want a self-hosted YouTube workspace that compares topics, formats, retention, cadence, creative experiments, and subscriber conversion across Shorts and standard videos?
 
 ## Test Channels
 

@@ -7,6 +7,7 @@ The paid/pro version may include a helper that:
 - uses user-owned OAuth credentials
 - pulls public video statistics
 - pulls available YouTube Analytics API metrics
+- classifies Shorts and standard videos so each format can use appropriate comparisons
 - writes daily CSV snapshots
 - never stores credentials in the repository
 

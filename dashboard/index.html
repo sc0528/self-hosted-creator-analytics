@@ -128,6 +128,9 @@
     .kpi-sub { margin-top: 3px; color: var(--muted); font-size: 12px; }
     .tabs { display: none; }
     .tabs.active { display: block; }
+    .content-filter { display: flex; gap: 4px; width: fit-content; margin: 0 0 14px; padding: 4px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); }
+    .filter-btn { border: 0; border-radius: 6px; padding: 7px 12px; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; font-weight: 720; }
+    .filter-btn.active { background: var(--nav); color: #fff; }
     table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
     th, td { padding: 10px 11px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
     th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align: left; }
@@ -203,6 +206,8 @@
       .kpi { flex: 0 0 min(78vw, 260px); scroll-snap-align: start; }
       .repo-callout { padding: 13px; }
       .repo-callout .pill { display: none; }
+      .content-filter { width: 100%; }
+      .filter-btn { flex: 1; }
       .bar-row { grid-template-columns: minmax(100px, .9fr) minmax(70px, 1fr) 58px; gap: 7px; }
       .sparkline { height: 190px; min-width: 520px; }
       #trendChart { overflow-x: auto; }
@@ -235,7 +240,7 @@
       <header>
         <div>
           <h1>Know what to make next.</h1>
-          <div class="subtitle" id="subtitle">Demo dashboard using fake Shorts data.</div>
+          <div class="subtitle" id="subtitle">Demo dashboard using synthetic YouTube data.</div>
         </div>
         <div class="actions">
           <label class="file-label">
@@ -250,10 +255,16 @@
       <section class="repo-callout">
         <div>
           <strong>What this dashboard does</strong>
-          <p>Track Shorts performance, cadence, topics, music tests, retention, and subscriber conversion from a lightweight local dashboard.</p>
+          <p>Compare YouTube topics, formats, retention, cadence, and subscriber conversion from a lightweight local dashboard.</p>
         </div>
         <div><span class="pill hot">Synthetic data</span></div>
       </section>
+
+      <div class="content-filter" role="group" aria-label="Content type">
+        <button class="filter-btn active" data-content-filter="all">All content</button>
+        <button class="filter-btn" data-content-filter="short">Shorts</button>
+        <button class="filter-btn" data-content-filter="video">Videos</button>
+      </div>
 
       <section id="overview" class="tabs active">
         <div class="grid kpis" id="kpis"></div>
@@ -280,7 +291,7 @@
             <table>
               <thead>
                 <tr>
-                  <th>ID</th><th>Title</th><th>Status</th><th>Views</th><th>Likes</th><th>Comments</th><th>Subs</th><th>Avg viewed</th><th>Format</th><th>Track</th>
+                  <th>ID</th><th>Title</th><th>Content</th><th>Status</th><th>Views</th><th>Likes</th><th>Comments</th><th>Subs</th><th>Avg viewed</th><th>Format</th><th>Track</th>
                 </tr>
               </thead>
               <tbody id="videoRows"></tbody>
@@ -298,7 +309,7 @@
           <div class="panel pad">
             <div class="panel-head"><h2>Test Hypothesis</h2><span class="note">experiment framework</span></div>
             <div class="insights">
-              <div class="insight"><strong>Ultra-short format</strong><span>Compare 6-8 second text-first/trending-audio Shorts against 12-15 second narration-first baselines.</span></div>
+              <div class="insight"><strong>Format comparison</strong><span>Compare Shorts and standard videos, then isolate length, presentation, hook, and narration experiments within each format.</span></div>
               <div class="insight"><strong>Subscriber conversion</strong><span>Track subscribers gained per 1,000 views instead of only celebrating raw views.</span></div>
               <div class="insight"><strong>Decision support</strong><span>The product does not promise virality; it helps creators see which formats deserve more production volume.</span></div>
             </div>
@@ -315,7 +326,7 @@
           <div class="panel pad">
             <div class="panel-head"><h2>Audio Notes</h2><span class="note">privacy boundary</span></div>
             <div class="insights">
-              <div class="insight"><strong>Trending audio is user-supplied</strong><span>The dashboard tracks track names and outcomes. It does not scrape or bypass the Shorts mobile sound picker.</span></div>
+              <div class="insight"><strong>Audio metadata is user-supplied</strong><span>Track music, narration, and presentation choices without scraping or bypassing YouTube publishing tools.</span></div>
               <div class="insight"><strong>Voice clarity matters</strong><span>Track whether narration stayed clean, masked, or text-only so the creator can compare audio strategies.</span></div>
             </div>
           </div>
@@ -346,15 +357,18 @@
   </div>
 
   <script>
-    const ledgerCsv = `id,status,pillar,title,hook,publish_date,platform_url,length_seconds,format_type,music_type,track_name,track_mood,voice_audibility,cta_variant,notes
-EX-001,published,Human behavior,Why Silence Feels Loud,Silence feels awkward because your brain expects rhythm.,2026-07-01,https://youtube.com/shorts/EXAMPLE001,14,narration_baseline,none,,baseline,clean,question_first,No-music narration baseline.
-EX-002,published,Memory,Why Old Songs Hit Hard,One song can pull a memory back instantly.,2026-07-01,https://youtube.com/shorts/EXAMPLE002,8,ultra_short_trending_audio,trending_youtube_audio,Example Trend 01,nostalgic,clean,follow_daily,Ultra-short trend test.
-EX-003,published,Relationships,Anxiety Or Attraction,A racing heart is not always romance.,2026-07-01,https://youtube.com/shorts/EXAMPLE003,7,ultra_short_trending_audio,trending_youtube_audio,Example Trend 02,romantic tension,text_only,weird_facts,Text-first ultra-short.
-EX-004,published,Intuition,Your Gut Feeling Is Fast Math,Your brain can notice patterns before you explain them.,2026-07-02,https://youtube.com/shorts/EXAMPLE004,15,narration_baseline,royalty_free,Example Library Track,curious,clean,question_first,Longer narration comparison.
-EX-005,published,Body language,Why Eye Contact Feels Intense,Your brain treats eyes as social information.,2026-07-02,https://youtube.com/shorts/EXAMPLE005,8,ultra_short_trending_audio,trending_youtube_audio,Example Trend 01,social tension,clean,follow_daily,Same track as EX-002.
-EX-006,published,Fear,Why Fear Slows Time,Fear can make your brain record more detail.,2026-07-03,https://youtube.com/shorts/EXAMPLE006,7,ultra_short_trending_audio,trending_youtube_audio,Example Trend 03,dark pulse,text_only,weird_facts,Fast caption loop test.
-EX-007,scheduled,Social behavior,Why Compliments Feel Weird,A compliment can clash with how you see yourself.,2026-07-04,,8,ultra_short_trending_audio,trending_youtube_audio,,warm,clean,follow_daily,Ready for publishing.
-EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place instantly.,,,8,ultra_short_trending_audio,trending_youtube_audio,,nostalgic,clean,question_first,Draft idea.`;
+    const ledgerCsv = `id,content_type,status,pillar,title,hook,publish_date,platform_url,length_seconds,format_type,music_type,track_name,track_mood,voice_audibility,cta_variant,notes
+EX-001,short,published,Human behavior,Why Silence Feels Loud,Silence feels awkward because your brain expects rhythm.,2026-07-01,https://youtube.com/shorts/EXAMPLE001,14,narration_baseline,none,,baseline,clean,question_first,No-music narration baseline.
+EX-002,short,published,Memory,Why Old Songs Hit Hard,One song can pull a memory back instantly.,2026-07-01,https://youtube.com/shorts/EXAMPLE002,8,ultra_short_trending_audio,trending_youtube_audio,Example Trend 01,nostalgic,clean,follow_daily,Ultra-short trend test.
+EX-003,short,published,Relationships,Anxiety Or Attraction,A racing heart is not always romance.,2026-07-01,https://youtube.com/shorts/EXAMPLE003,7,ultra_short_trending_audio,trending_youtube_audio,Example Trend 02,romantic tension,text_only,weird_facts,Text-first ultra-short.
+EX-004,short,published,Intuition,Your Gut Feeling Is Fast Math,Your brain can notice patterns before you explain them.,2026-07-02,https://youtube.com/shorts/EXAMPLE004,15,narration_baseline,royalty_free,Example Library Track,curious,clean,question_first,Longer narration comparison.
+EX-005,short,published,Body language,Why Eye Contact Feels Intense,Your brain treats eyes as social information.,2026-07-02,https://youtube.com/shorts/EXAMPLE005,8,ultra_short_trending_audio,trending_youtube_audio,Example Trend 01,social tension,clean,follow_daily,Same track as EX-002.
+EX-006,short,published,Fear,Why Fear Slows Time,Fear can make your brain record more detail.,2026-07-03,https://youtube.com/shorts/EXAMPLE006,7,ultra_short_trending_audio,trending_youtube_audio,Example Trend 03,dark pulse,text_only,weird_facts,Fast loop test.
+EX-007,short,scheduled,Social behavior,Why Compliments Feel Weird,A compliment can clash with how you see yourself.,2026-07-04,,8,ultra_short_trending_audio,trending_youtube_audio,,warm,clean,follow_daily,Ready for publishing.
+EX-008,short,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place instantly.,,,8,ultra_short_trending_audio,trending_youtube_audio,,nostalgic,clean,question_first,Draft idea.
+EX-009,video,published,Memory,How Music Rebuilds A Moment,Why can three notes return you to a forgotten room?,2026-07-02,https://youtube.com/watch?v=EXAMPLE009,420,visual_explainer,royalty_free,Example Ambient Bed,reflective,clean,subscribe_end_screen,Seven-minute visual explainer.
+EX-010,video,published,Fear,What Fear Does To Your Sense Of Time,Your internal clock changes when survival takes over.,2026-07-03,https://youtube.com/watch?v=EXAMPLE010,610,talking_head_explainer,none,,focused,clean,related_video,Ten-minute talking-head explainer.
+EX-011,video,draft,Human behavior,The Science Of Awkward Silence,What your brain is calculating when nobody speaks.,,,540,visual_explainer,royalty_free,Example Ambient Bed,curious,clean,subscribe_end_screen,Long-form draft.`;
 
     const defaultMetricsCsv = `snapshot_date,id,days_since_publish,views,likes,comments,subscribers_gained,avg_percent_viewed,average_view_duration_seconds,shares,impressions,ctr_percent,music_type,track_name,track_mood,voice_audibility,notes
 2026-07-01,EX-001,0,74,2,0,0,82.0,11.5,0,420,4.3,none,,baseline,clean,Published baseline.
@@ -368,9 +382,14 @@ EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place in
 2026-07-02,EX-005,0,440,18,3,1,121.0,9.7,5,2100,7.9,trending_youtube_audio,Example Trend 01,social tension,clean,Same track as EX-002.
 2026-07-03,EX-005,1,2050,88,14,8,133.0,10.6,22,8400,10.2,trending_youtube_audio,Example Trend 01,social tension,clean,Track appears repeatable.
 2026-07-03,EX-006,0,710,31,5,3,151.0,10.6,9,3000,9.6,trending_youtube_audio,Example Trend 03,dark pulse,text_only,Fast loop test.
-2026-07-04,EX-006,1,4870,212,31,19,168.0,11.8,57,19800,12.7,trending_youtube_audio,Example Trend 03,dark pulse,text_only,High replay and conversion.`;
+2026-07-04,EX-006,1,4870,212,31,19,168.0,11.8,57,19800,12.7,trending_youtube_audio,Example Trend 03,dark pulse,text_only,High replay and conversion.
+2026-07-02,EX-009,0,180,14,3,2,46.0,193.2,5,3100,5.8,royalty_free,Example Ambient Bed,reflective,clean,Visual explainer launch.
+2026-07-03,EX-009,1,740,49,9,8,51.0,214.2,18,10100,6.4,royalty_free,Example Ambient Bed,reflective,clean,Strong search discovery.
+2026-07-03,EX-010,0,260,21,5,3,49.0,298.9,7,3900,6.7,none,,focused,clean,Talking-head launch.
+2026-07-04,EX-010,1,1120,83,16,12,54.0,329.4,29,14200,7.9,none,,focused,clean,High watch time and conversion.`;
 
     let metricsCsv = defaultMetricsCsv;
+    let contentFilter = 'all';
 
     function parseCsv(text) {
       const rows = [];
@@ -421,12 +440,14 @@ EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place in
         const snap = latest.get(video.id) || {};
         return {
           ...video,
+          content_type: video.content_type || (num(video.length_seconds) <= 60 ? 'short' : 'video'),
           views: num(snap.views),
           likes: num(snap.likes),
           comments: num(snap.comments),
           subs: num(snap.subscribers_gained),
           retention: num(snap.avg_percent_viewed),
           duration: num(snap.average_view_duration_seconds),
+          ctr: num(snap.ctr_percent),
           shares: num(snap.shares),
           track_name: snap.track_name || video.track_name,
           music_type: snap.music_type || video.music_type,
@@ -457,12 +478,19 @@ EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place in
       const baseline = published.filter(v => v.format_type === 'narration_baseline');
       const ultraViews = ultra.reduce((sum, v) => sum + v.views, 0);
       const baselineViews = baseline.reduce((sum, v) => sum + v.views, 0);
+      const shorts = published.filter(v => v.content_type === 'short');
+      const standard = published.filter(v => v.content_type === 'video');
+      const fifth = contentFilter === 'short'
+        ? ['Ultra-short lift', `${baselineViews && ultra.length ? (ultraViews / ultra.length / (baselineViews / baseline.length)).toFixed(1) : 'n/a'}x`, 'avg views vs baseline']
+        : contentFilter === 'video'
+          ? ['Avg CTR', pct(standard.length ? standard.reduce((sum, v) => sum + v.ctr, 0) / standard.length : 0), 'impressions to views']
+          : ['Content mix', `${shorts.length}S / ${standard.length}V`, 'Shorts and videos'];
       const cards = [
-        ['Total views', fmt(totalViews), `${published.length} published Shorts`],
-        ['Avg viewed', pct(avgRetention), avgRetention > 100 ? 'rewatch signal present' : 'completion signal'],
+        ['Total views', fmt(totalViews), `${published.length} published items`],
+        ['Avg viewed', pct(avgRetention), contentFilter === 'all' ? 'filter for format context' : avgRetention > 100 ? 'rewatch signal present' : 'completion signal'],
         ['Engagement', pct(totalViews ? totalEngagement / totalViews * 100 : 0), 'likes + comments + shares'],
         ['Subscribers', fmt(totalSubs), `${(totalViews ? totalSubs / totalViews * 1000 : 0).toFixed(1)} per 1K views`],
-        ['Ultra-short lift', `${baselineViews ? (ultraViews / ultra.length / (baselineViews / baseline.length)).toFixed(1) : 'n/a'}x`, 'avg views vs baseline']
+        fifth
       ];
       document.getElementById('kpis').innerHTML = cards.map(([label, value, sub]) => `
         <div class="panel kpi">
@@ -486,7 +514,7 @@ EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place in
 
     function renderTopicBars(videos) {
       const rows = [...groupBy(videos.filter(v => v.status === 'published'), v => v.pillar).entries()]
-        .map(([pillar, group]) => ({ label: pillar, value: group.reduce((sum, v) => sum + v.views, 0), sub: `${group.length} Shorts` }))
+        .map(([pillar, group]) => ({ label: pillar, value: group.reduce((sum, v) => sum + v.views, 0), sub: `${group.length} items` }))
         .sort((a, b) => b.value - a.value);
       renderBars('topicBars', rows, 'var(--green)');
     }
@@ -515,7 +543,7 @@ EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place in
         .map(([track, group]) => ({
           label: track,
           value: group.reduce((sum, v) => sum + v.views, 0),
-          sub: `${group.length} Shorts, ${pct(group.reduce((sum, v) => sum + v.retention, 0) / group.length)} avg viewed`
+          sub: `${group.length} items, ${pct(group.reduce((sum, v) => sum + v.retention, 0) / group.length)} avg viewed`
         }))
         .sort((a, b) => b.value - a.value);
       renderBars('musicBars', rows, 'var(--blue)');
@@ -526,6 +554,7 @@ EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place in
         <tr>
           <td>${esc(v.id)}</td>
           <td>${esc(v.title)}</td>
+          <td>${esc(v.content_type === 'short' ? 'Short' : 'Video')}</td>
           <td><span class="pill ${esc(v.status)}">${esc(v.status)}</span></td>
           <td>${fmt(v.views)}</td>
           <td>${fmt(v.likes)}</td>
@@ -544,9 +573,15 @@ EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place in
       const bestSub = [...published].sort((a, b) => (b.views ? b.subs / b.views : 0) - (a.views ? a.subs / a.views : 0))[0];
       const ultra = published.filter(v => v.format_type === 'ultra_short_trending_audio');
       const ultraRet = ultra.length ? ultra.reduce((sum, v) => sum + v.retention, 0) / ultra.length : 0;
+      const avgDuration = published.length ? published.reduce((sum, v) => sum + v.duration, 0) / published.length : 0;
+      const signal = contentFilter === 'short'
+        ? ['Replay signal', `Ultra-short/trending-audio tests average ${pct(ultraRet)} viewed in this sample data.`]
+        : contentFilter === 'video'
+          ? ['Watch-time signal', `Standard videos average ${Math.round(avgDuration / 60)} minutes viewed in this sample data.`]
+          : ['Format-aware retention', 'Viewloom keeps Shorts replay signals and standard-video watch time in the same decision workflow.'];
       const items = [
         ['Best topic to double down on', `${best?.pillar || 'n/a'} is leading with ${fmt(best?.views || 0)} views on "${best?.title || 'n/a'}."`],
-        ['Replay signal', `Ultra-short/trending-audio tests average ${pct(ultraRet)} viewed in this sample data.`],
+        signal,
         ['Subscriber quality', `"${bestSub?.title || 'n/a'}" has the strongest subscriber conversion in the demo set.`],
         ['Product validation point', 'This dashboard turns raw creator data into format, topic, cadence, and audio decisions.']
       ];
@@ -581,21 +616,33 @@ EX-008,draft,Memory,Why Smells Unlock Memories,A scent can bring back a place in
 
     function render() {
       const data = model();
-      document.getElementById('subtitle').textContent = `${data.metrics.length} snapshots, ${data.videos.filter(v => v.status === 'published').length} published Shorts, fake data only.`;
-      renderKpis(data.videos);
-      renderTopicBars(data.videos);
-      renderFormatBars(data.videos);
-      renderCadence(data.videos);
-      renderMusic(data.videos);
-      renderVideos(data.videos);
-      renderInsights(data.videos);
-      renderTrend(data.metrics);
+      const videos = contentFilter === 'all' ? data.videos : data.videos.filter(v => v.content_type === contentFilter);
+      const ids = new Set(videos.map(v => v.id));
+      const metrics = data.metrics.filter(m => ids.has(m.id));
+      const label = contentFilter === 'all' ? 'content items' : contentFilter === 'short' ? 'Shorts' : 'videos';
+      document.getElementById('subtitle').textContent = `${metrics.length} snapshots, ${videos.filter(v => v.status === 'published').length} published ${label}, synthetic data only.`;
+      renderKpis(videos);
+      renderTopicBars(videos);
+      renderFormatBars(videos);
+      renderCadence(videos);
+      renderMusic(videos);
+      renderVideos(videos);
+      renderInsights(videos);
+      renderTrend(metrics);
     }
 
     document.querySelectorAll('.nav-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b === btn));
         document.querySelectorAll('.tabs').forEach(tab => tab.classList.toggle('active', tab.id === btn.dataset.tab));
+      });
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        contentFilter = btn.dataset.contentFilter;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+        render();
       });
     });
 

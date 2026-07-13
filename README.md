@@ -4,7 +4,7 @@
 
 Viewloom is a public demo of a private-by-default, CSV-powered workspace for creators who want to understand what to make next—not just watch view counts move.
 
-Explore synthetic YouTube Shorts data, compare formats and experiments, and evaluate the self-hosted workflow without connecting an account. No private home-lab details, real channel data, OAuth secrets, internal hostnames, or private network paths are included.
+Explore synthetic YouTube data, compare Shorts and standard videos, and evaluate the self-hosted workflow without connecting an account. No private home-lab details, real channel data, OAuth secrets, internal hostnames, or private network paths are included.
 
 ![Viewloom dashboard overview](assets/viewloom-desktop-demo.png)
 
@@ -15,15 +15,15 @@ Explore synthetic YouTube Shorts data, compare formats and experiments, and eval
 
 </details>
 
-## See The Signal Behind Your Shorts
+## See The Signal Behind Every Upload
 
 Viewloom turns a simple content ledger and performance snapshots into practical comparisons for:
 
-- Shorts publishing cadence
+- Shorts and standard-video publishing cadence
 - views, likes, comments, shares, and subscriber conversion
 - average percent viewed
 - topic/category performance
-- ultra-short vs narration-first format tests
+- format, length, hook, presentation, and narration tests
 - music/audio experiments
 - reusable CSV-based analytics history
 
@@ -40,7 +40,7 @@ The public demo does not:
 - promise viral growth
 - expose any home-lab infrastructure
 
-It uses fake sample data only.
+It uses synthetic sample data only. The included workspace demonstrates a mixed YouTube channel with both Shorts and standard videos.
 
 ## Try The Demo
 
