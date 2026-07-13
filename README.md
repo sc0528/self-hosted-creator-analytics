@@ -66,6 +66,24 @@ python -m http.server 8000
 
 Then open `http://localhost:8000/dashboard/`.
 
+### Run With Docker
+
+To run the same synthetic-data demo as a container:
+
+```bash
+docker run --rm -p 8080:80 ghcr.io/sc0528/viewloom:latest
+```
+
+Then open `http://localhost:8080/`.
+
+From a cloned repository, Docker Compose provides the equivalent workflow:
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d
+```
+
+The public container is only the static Viewloom demo. It does not connect to YouTube, collect channel data, or contain OAuth credentials. A future functional edition would add those capabilities with user-owned credentials and persistent storage.
+
 Use **Load metrics CSV** to test your own sanitized export, **Reset demo** to restore the sample, and **Export snapshot** to download the active metrics.
 
 ## Help Shape Viewloom
@@ -80,6 +98,7 @@ If the idea is useful but you are not ready to test, starring the repository is 
 
 ```text
 viewloom/
+  Dockerfile
   README.md
   .env.example
   config.example.json

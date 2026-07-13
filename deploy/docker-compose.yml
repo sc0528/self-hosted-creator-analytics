@@ -1,7 +1,9 @@
 services:
   viewloom:
-    image: nginx:alpine
+    image: ghcr.io/sc0528/viewloom:latest
+    build:
+      context: ..
+      dockerfile: Dockerfile
     ports:
       - "8080:80"
-    volumes:
-      - ./dashboard:/usr/share/nginx/html:ro
+    restart: unless-stopped

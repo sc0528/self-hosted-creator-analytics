@@ -2,7 +2,43 @@
 
 This public demo is static.
 
-## Option 1: Open Directly
+## Option 1: Hosted Demo
+
+Open:
+
+```text
+https://sc0528.github.io/viewloom/
+```
+
+## Option 2: Docker
+
+Run the published static-demo image:
+
+```bash
+docker run --rm -p 8080:80 ghcr.io/sc0528/viewloom:latest
+```
+
+Then open:
+
+```text
+http://localhost:8080/
+```
+
+From a cloned repository, you can instead build or run it with Compose:
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d
+```
+
+Stop it with:
+
+```bash
+docker compose -f deploy/docker-compose.yml down
+```
+
+This image contains synthetic data and the static dashboard only. It does not include YouTube API collection or OAuth setup.
+
+## Option 3: Open Directly
 
 Open:
 
@@ -10,7 +46,7 @@ Open:
 dashboard/index.html
 ```
 
-## Option 2: Serve Locally
+## Option 4: Serve Locally
 
 From the project root:
 
