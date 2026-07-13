@@ -43,3 +43,9 @@ Do not use real:
 If this becomes a paid pack, users should create and own their own Google OAuth credentials.
 
 Do not ship shared credentials.
+
+## Public Container Boundary
+
+The public container must contain only the static dashboard, logo assets, and synthetic embedded data. Do not copy `.env`, configuration secrets, sample-data exports, scripts, logs, documentation working files, or Git metadata into the image.
+
+The `.dockerignore` file enforces this boundary. Review it whenever the Docker build context changes.

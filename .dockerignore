@@ -1,0 +1,13 @@
+.git
+.github
+.env
+*.log
+*.token.json
+*.secret.json
+docs
+deploy
+sample-data
+scripts
+config.example.json
+LICENSE
+README.md
