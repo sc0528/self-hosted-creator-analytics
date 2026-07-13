@@ -1,8 +1,7 @@
 services:
-  creator-analytics-dashboard:
+  viewloom:
     image: nginx:alpine
     ports:
       - "8080:80"
     volumes:
       - ./dashboard:/usr/share/nginx/html:ro
-

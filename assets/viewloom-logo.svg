@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="logo-title">
-  <title id="logo-title">Creator Analytics</title>
+  <title id="logo-title">Viewloom</title>
   <rect width="64" height="64" rx="12" fill="#06182c"/>
   <path d="M32 9 51 20v22L43 47v-7.2l2-1.2V23.4L32 16 19 23.4v15.2l2 1.2V47l-8-5V20L32 9Z" fill="#fff"/>
   <path d="M24 37h5v10h-5V37Zm8-7h5v17h-5V30Zm8-8h5v25h-5V22Z" fill="#0b63e5"/>

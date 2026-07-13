@@ -1,21 +1,23 @@
-# Self-Hosted Creator Analytics Dashboard
+# Viewloom
 
-A public demo of a private-by-default, CSV-powered dashboard for creators who want to understand what to make next—not just watch view counts move.
+**Self-hosted analytics for creators.**
+
+Viewloom is a public demo of a private-by-default, CSV-powered workspace for creators who want to understand what to make next—not just watch view counts move.
 
 Explore synthetic YouTube Shorts data, compare formats and experiments, and evaluate the self-hosted workflow without connecting an account. No private home-lab details, real channel data, OAuth secrets, internal hostnames, or private network paths are included.
 
-![Creator Analytics dashboard overview](assets/dashboard-desktop-demo.png)
+![Viewloom dashboard overview](assets/viewloom-desktop-demo.png)
 
 <details>
 <summary>Mobile dashboard preview</summary>
 
-![Creator Analytics mobile dashboard](assets/dashboard-mobile-demo.png)
+![Viewloom mobile dashboard](assets/viewloom-mobile-demo.png)
 
 </details>
 
 ## See The Signal Behind Your Shorts
 
-This proof of concept turns a simple content ledger and performance snapshots into practical comparisons for:
+Viewloom turns a simple content ledger and performance snapshots into practical comparisons for:
 
 - Shorts publishing cadence
 - views, likes, comments, shares, and subscriber conversion
@@ -63,7 +65,7 @@ Use **Load metrics CSV** to test your own sanitized export, **Reset demo** to re
 ## Folder Map
 
 ```text
-self-hosted-creator-analytics/
+viewloom/
   README.md
   .env.example
   config.example.json

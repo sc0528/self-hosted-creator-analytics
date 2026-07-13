@@ -6,7 +6,7 @@ Use this checklist before promoting the public demo.
 
 - [ ] Initialize Git and choose a clear public repository name.
 - [ ] Confirm the license matches the intended public demo and future paid-pack model.
-- [ ] Add a concise repository description and topics such as `creator-analytics`, `youtube-analytics`, `self-hosted`, and `shorts`.
+- [ ] Add a concise Viewloom repository description and topics such as `creator-analytics`, `youtube-analytics`, `self-hosted`, and `shorts`.
 - [ ] Enable Issues and add a validation-focused issue template.
 - [ ] Add a repository social preview after a sanitized dashboard screenshot is available.
 

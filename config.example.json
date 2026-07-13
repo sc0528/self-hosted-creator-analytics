@@ -1,7 +1,7 @@
 {
   "channelName": "Example Shorts Channel",
   "timezone": "America/New_York",
-  "dashboardTitle": "Creator Analytics Dashboard",
+  "dashboardTitle": "Viewloom",
   "dataDirectory": "sample-data",
   "metricsFile": "performance-snapshots.csv",
   "ledgerFile": "content-ledger.csv",
@@ -11,4 +11,3 @@
     "ultra_short_trending_audio"
   ]
 }
-

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: creator-analytics-dashboard-static
+  name: viewloom-static
   namespace: example-apps
 data:
   README: "Build this ConfigMap from dashboard/index.html in your own deployment process."
@@ -9,17 +9,17 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: creator-analytics-dashboard
+  name: viewloom
   namespace: example-apps
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: creator-analytics-dashboard
+      app: viewloom
   template:
     metadata:
       labels:
-        app: creator-analytics-dashboard
+        app: viewloom
     spec:
       containers:
         - name: nginx
@@ -30,12 +30,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: creator-analytics-dashboard
+  name: viewloom
   namespace: example-apps
 spec:
   selector:
-    app: creator-analytics-dashboard
+    app: viewloom
   ports:
     - port: 80
       targetPort: 80
-
